@@ -1,5 +1,4 @@
 package com.ipiecoles.java.java350.model;
-
 import java.time.LocalDate;
 import java.util.*;
 
@@ -11,15 +10,13 @@ public final class Entreprise {
     public static final Double PRIME_ANCIENNETE = 100d;
     public static final Integer PERFORMANCE_BASE = 1;
     public static final Integer NB_JOURS_MAX_FORFAIT = 218;
-    private static final double PRIME_BASE = 1000d;
-
+    protected static final double PRIME_BASE = 1000d;
     public static final Map<NiveauEtude, Double> COEFF_SALAIRE_ETUDES = new EnumMap<>(NiveauEtude.class);
-    private static final Map<Integer, LocalDate> datePaque = new HashMap<>();
-
+    protected static final Map<Integer, LocalDate> datePaque = new HashMap<>();
+    
     private Entreprise() {
-
     }
-
+    
     static {
         COEFF_SALAIRE_ETUDES.put(NiveauEtude.CAP, 1.0);
         COEFF_SALAIRE_ETUDES.put(NiveauEtude.BAC, 1.1);
@@ -28,7 +25,7 @@ public final class Entreprise {
         COEFF_SALAIRE_ETUDES.put(NiveauEtude.MASTER, 1.4);
         COEFF_SALAIRE_ETUDES.put(NiveauEtude.INGENIEUR, 1.6);
         COEFF_SALAIRE_ETUDES.put(NiveauEtude.DOCTORAT, 1.7);
-
+        
         datePaque.put(2019, LocalDate.of(2019, 4, 21));
         datePaque.put(2020, LocalDate.of(2020, 4, 12));
         datePaque.put(2021, LocalDate.of(2021, 4, 4));
@@ -52,18 +49,16 @@ public final class Entreprise {
         datePaque.put(2039, LocalDate.of(2039, 4, 10));
         datePaque.put(2040, LocalDate.of(2040, 4, 1));
     }
-
+    
     public static final String MATRICULE_INITIAL = "00000";
-
-
+    
     public static Double primeAnnuelleBase() {
         return PRIME_BASE;
     }
-
+    
     public static List<LocalDate> joursFeries(LocalDate now){
-
         return Arrays.asList(
-                // 1er janvier	Jour de l’an
+                // 1er janvier	Jour de l'an
                 LocalDate.of(now.getYear(), 1,1),
                 // Lendemain du dimanche de Pâques.	Lundi de Pâques
                 datePaque.get(now.getYear()).plusDays(1L),
@@ -79,14 +74,12 @@ public final class Entreprise {
                 LocalDate.of(now.getYear(), 7,14),
                 // 15 août Assomption
                 LocalDate.of(now.getYear(), 8,15),
-                // 1er novembre	Toussaint Fête de tous les saints de l’Église catholique.
+                // 1er novembre	Toussaint Fête de tous les saints de l'Église catholique.
                 LocalDate.of(now.getYear(), 11,1),
                 // 11 novembre Armistice de 1918
                 LocalDate.of(now.getYear(), 11,11),
                 // 25 décembre Noël
                 LocalDate.of(now.getYear(), 12,25)
-
         );
     }
-
 }
