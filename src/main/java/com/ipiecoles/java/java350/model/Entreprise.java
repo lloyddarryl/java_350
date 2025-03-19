@@ -11,7 +11,7 @@ public final class Entreprise {
     public static final Integer PERFORMANCE_BASE = 1;
     public static final Integer NB_JOURS_MAX_FORFAIT = 218;
     protected static final double PRIME_BASE = 1000d;
-    public static final Map<NiveauEtude, Double> COEFF_SALAIRE_ETUDES = new EnumMap<>(NiveauEtude.class);
+protected static final Map<NiveauEtude, Double> COEFF_SALAIRE_ETUDES = new EnumMap<>(NiveauEtude.class);
     protected static final Map<Integer, LocalDate> datePaque = new HashMap<>();
     
     private Entreprise() {
